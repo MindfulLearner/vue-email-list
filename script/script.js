@@ -6,7 +6,8 @@ createApp(
     {
         data() {
             return {
-                usersEmail: data,
+                usersEmail: data10,
+                si: false,
             }
         },
         methods: {
@@ -29,10 +30,20 @@ createApp(
                         const result = joshua.data;
                         console.log(result);
                         console.log(joshua);
-                        console.log(joshua.data);
+                        console.log(joshua.data.response);
+
+                        this.usersEmail.push({ email: joshua.data.response});
+
+                        console.log(this.usersEmail);
+
+
+                        if (this.usersEmail.length == 10) {
+                            console.log('le email sono 10');
+                            this.si = true;
+                        }
                     })
-                    .catch((error) => {
-                        console.error(error);
+                    .catch((errore) => {
+                        console.error(errore);
                     });
             }
         }
